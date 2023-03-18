@@ -1,0 +1,52 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: Prune=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+  name: openshift-gitops
+spec:
+  applicationInstanceLabelKey: argocd.argoproj.io/instance
+  server:
+    insecure: true
+    route:
+      enabled: true
+      tls:
+        termination: edge
+        insecureEdgeTerminationPolicy: Redirect
+  resourceCustomizations: |
+    gpte.opentlc.com/Gitea:
+      health.lua: |
+        hs = {}
+        if obj.status ~= nil then
+          if obj.status.userSetupComplete ~= nil then
+            if obj.status.userSetupComplete == false then
+              hs.status = "Progressing"
+              hs.message = "Gitea is not yet deployed or configured."
+              return hs
+            end
+          end
+          if obj.status.userSetupComplete ~= nil then
+            if obj.status.userSetupComplete == true then
+              hs.status = "Healthy"
+              hs.message = "Gitea has been deployed and configured."
+              return hs
+            end
+          end
+        end
+        hs.status = "Progressing"
+        hs.message = "Waiting for Gitea do deploy."
+        return hs
+  resourceExclusions: |
+    - apiGroups:
+      - compliance.openshift.io
+      kinds:
+      - ComplianceCheckResult
+      - ComplianceRemediation
+  rbac:
+    defaultPolicy: role:admin
+    policy: |
+      g, openshift-gitops-admins, role:admin
+    scopes: "[groups]"
