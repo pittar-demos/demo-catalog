@@ -5,3 +5,5 @@ namespace: openshift-gitops
 
 resources:
   - openshift-gitops-application.yaml
+  - openshift-gitops-extended-clusterrole.yaml
+  - openshift-gitops-extended-clusterrolebinding.yaml
