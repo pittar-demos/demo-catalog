@@ -11,3 +11,9 @@ rules:
       - limitranges
     verbs:
       - '*'
+  - apiGroups:
+    - "operator.tekton.dev"
+    resources:
+      - '*'
+    verbs:
+      - '*'
