@@ -5,18 +5,18 @@ metadata:
     # Waves 0-99:    Cluster Config
     # Waves 100-199: Operator Installation
     # Waves 200-299: Operator Instances
-    argocd.argoproj.io/sync-wave: "200"
+    argocd.argoproj.io/sync-wave: "101"
   labels:
     gitops.ownedBy: openshift-gitops
-    catgory: devsecops
-  name: developer-gitops
+    category: operators
+  name: openshift-pipelines-config
 spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: openshift-gitops-instances/overlays/gitops
+    path: openshift-pipelines-operator/overlays/pipelines-1.9
     repoURL: https://github.com/pittar-demos/demo-catalog.git
     targetRevision: main
   syncPolicy:
