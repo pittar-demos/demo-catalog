@@ -9,7 +9,7 @@ metadata:
   labels:
     gitops.ownedBy: openshift-gitops
     category: operators
-  name: openshift-pipelines-config
+  name: openshift-pipelines
 spec:
   destination:
     namespace: openshift-gitops
