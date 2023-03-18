@@ -9,7 +9,7 @@ metadata:
   labels:
     gitops.ownedBy: openshift-gitops
     category: baseline-config
-  name: openshift-gitops-config
+  name: openshift-user-workload-monitoring
 spec:
   destination:
     namespace: openshift-gitops
