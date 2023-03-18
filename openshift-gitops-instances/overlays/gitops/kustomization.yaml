@@ -6,4 +6,4 @@ namespace: gitops
 resources:
   - namespace.yaml
   - gitops-admins-group.yaml
-  - gitops-admins-group.yaml
+  - argocd.yaml
