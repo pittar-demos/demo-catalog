@@ -10,4 +10,4 @@ If you're starting with OpenShift GitOps, then run the following command to depl
 oc apply -k https://github.com/pittar-demos/demo-catalog/openshift-gitops-operator/overlays/gitops-1.7
 ```
 
-Once Argo CD is up and running in the `openshift-gitops` namespace, you can proceed.
+Once Argo CD is up and running in the `openshift-gitops` namespace, you're ready to setup your demos!
