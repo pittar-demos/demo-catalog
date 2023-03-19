@@ -5,4 +5,4 @@ namespace: openshift-operators
 
 resources:
   - namespace.yaml
-  - openshift-pipelines-opeartor-subscription.yaml
+  - openshift-pipelines-operator-subscription.yaml
