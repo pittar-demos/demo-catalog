@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "202"
   labels:
     gitops.ownedBy: openshift-gitops
-    category: operators
+    category: devsecops
   name: sonarqube
 spec:
   destination:
