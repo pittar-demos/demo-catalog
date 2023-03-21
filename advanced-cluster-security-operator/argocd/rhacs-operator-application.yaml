@@ -1,0 +1,33 @@
+kind: Application
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  annotations:
+    # Waves 0-99:    Cluster Config
+    # Waves 100-199: Operator Installation
+    # Waves 200-299: Operator Instances and Tooling
+    argocd.argoproj.io/sync-wave: "103"
+  labels:
+    gitops.ownedBy: openshift-gitops
+    category: operators
+  name: rhacs-operator
+spec:
+  destination:
+    namespace: rhacs-operator
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: advanced-cluster-security-operator/overlays/rhacs-3.74
+    repoURL: https://github.com/pittar-demos/demo-catalog.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5 # number of failed sync attempt retries; unlimited number of attempts if less than 0
+      backoff:
+        duration: 5s # the amount to back off. Default unit is seconds, but could also be a duration (e.g. "2m", "1h")
+        factor: 2 # a factor to multiply the base duration after each failed retry
+        maxDuration: 10m # the maximum amount of time allowed for the backoff strategy
