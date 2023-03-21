@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: sonarqube
 
 resources:
+  - namespace.yaml
   - ../../base
   - sonarqube-admin-secret.yaml
   - configure-sonarqube-job.yaml
