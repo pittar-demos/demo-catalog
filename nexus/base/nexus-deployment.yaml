@@ -38,7 +38,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 1
           name: nexus
-          image: docker.io/sonatype/nexus:2.14.20
+          image: docker.io/sonatype/nexus:2.15.1
           ports:
             - containerPort: 8081
               protocol: TCP
