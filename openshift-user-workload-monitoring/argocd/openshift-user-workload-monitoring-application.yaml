@@ -3,8 +3,9 @@ apiVersion: argoproj.io/v1alpha1
 metadata:
   annotations:
     # Waves 0-99:    Cluster Config
-    # Waves 100-199: Operator Installation
-    # Waves 200-299: Operator Instances
+    # Waves 100-199: Tenant namespaces
+    # Waves 200-299: Operator Installation
+    # Waves 300-399: Operator Instances and Cluster Services
     argocd.argoproj.io/sync-wave: "2"
   labels:
     gitops.ownedBy: openshift-gitops
