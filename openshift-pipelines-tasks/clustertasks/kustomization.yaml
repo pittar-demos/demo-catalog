@@ -1,0 +1,4 @@
+resources:
+  - mvn-extended-clustertask.yaml
+  - rox-image-check-clustertask.yaml
+  - rox-image-scan-clustertask.yaml
