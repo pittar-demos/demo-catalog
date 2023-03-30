@@ -1,0 +1,1 @@
+Installs the *stable* channel of the Vertical Pod Autoscaler Operator which tracks the current version.
