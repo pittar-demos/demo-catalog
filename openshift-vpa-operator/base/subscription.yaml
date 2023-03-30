@@ -3,7 +3,7 @@ kind: Subscription
 metadata:
   name: vertical-pod-autoscaler
 spec:
-  channel: stable
+  channel: patch-me
   installPlanApproval: Automatic
   name: vertical-pod-autoscaler
   source: redhat-operators
