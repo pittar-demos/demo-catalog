@@ -13,6 +13,6 @@ metadata:
   namespace: openshift-pipelines
 data:
   artifacts.oci.storage: oci
-  artifacts.taskrun.format: tekton
+  artifacts.taskrun.format: in-toto
   artifacts.taskrun.storage: tekton
   transparency.enabled: "true"
