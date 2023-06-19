@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+  name: argocd-gpg-keys-cm
+  namespace: openshift-gitops
+data:
+  4E2EE331E75F21F9: |-
+    -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+    mQENBGSLQQMBCADbThEB1tILo0J/JIn0fBNwCd4pnBhOrPYZ5CRXla6VHFhwZ3ED
+    q6gaxPr2eHY4QHOc1SRdadzVDRjAFa7+GK8VdKPECigzCndj6diEEaLKQ9p7uT5f
+    dCc658Sh9q3BuERv9zEhzZrkHR3HjJTGBom1adqrF7LUSy0uelHl/PpEJaP8uwXs
+    85nE+GwZjCkd8n4pEd9/ezMEZgw3xZe9HJo1HcROALiiqPCUg+21vI8syEqp0bJE
+    7nkXxbNvbXPIMaIp2crcxFKWvuuyPPaS3yxni+S7iXXFZPkyRmGjhrqwSca+4gCW
+    6QtAz80EOm/TvT5aK+krH8I0uR42JXLLFFY7ABEBAAG0HkFuZHJldyBQaXR0IDxh
+    cGl0dEByZWRoYXQuY29tPokBVAQTAQgAPhYhBAz324I0Ofm6wGQ5Nk4u4zHnXyH5
+    BQJki0EDAhsDBQkDwmcABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEE4u4zHn
+    XyH54RoIAIUitg0CIQgzgsCqFvqnVLFl5FLKhQXWVnoBA9OuCuhPM1yOg6tdwOBg
+    jZ80POgJ87lXA6FjkOoglogAuLR+Dam7hG1EEwkJQZjEREbdSuB1w7AwNlX8WG23
+    qtqbTLrhWJUxE7WLoWN9lXYs6R9qwHEOUqWcirWMhU1mEiauzB8gNhlz0ayoF7j/
+    9B1lXdRkiOql5W03BAoWlKmUo5yEaz9/So+AwmKcOxa86zUreysaixeVRBc3NekX
+    /ZPQzY+cK8Q5AkMCxmLMQ7KCmNslFatDJNHoO5iNA7eiiY72ug+8U6clfI6l0ocw
+    ku508l+r7i3LKArS/fgKW6MibqsTOwa5AQ0EZItBAwEIAK6DlA0ptMFJ1qrWSN7h
+    8cBOlInz42PP4G+Kf9zao9yZJQvLslqpXzB4aQEBeKcY5Zg8tDPvld1JSZzHheKt
+    qcXxB1DzVjFPxMYfxIohS5/zQ9BQOSUeo/9U0fjtYr8ZiaM0qXUvSDOpZwGQVTS3
+    nkerBU/wB8WaE0pOurafNQEN7XrTcJTYYSK0xyQKPnxPoyjlpvnExC/BqgvSARzv
+    hTIheuUU4qw72E0rk9WUbCy/97cxid43CLX5liKqPW0jjgS0YZ/B23yiozX6g+4S
+    YAfazIb0Nq0sS+m2tHXPqlBtqxCZrvsrOPwLfhR7oIT825/QBeIWxDlM+BoHFtLH
+    Fi0AEQEAAYkBPAQYAQgAJhYhBAz324I0Ofm6wGQ5Nk4u4zHnXyH5BQJki0EDAhsM
+    BQkDwmcAAAoJEE4u4zHnXyH5jdgIAMjj8iJcLvav6rMhMsOKy5kSqpipVv2jXdZF
+    shr+Aa/QMK0Y65KIfErpG22keZXNd+V7h8nxn3V9mvr7gdAg9MfkogTqrRrzIEe7
+    7Kxj3B38bIMcCBgePU49awlvC0Bc9HivyXHN2m1cRAJbcLs65tF0esMckPS2X51p
+    KLpU0h3z3dH2zf2yeLQ4mXjquJSJm3y2x6bo9vWGDhirvnRKm9s4ItNetxMRiww7
+    F6mAxqCFcBWDXwuCaZl4LXexdOE5mKNtxoBNrv/q1SDijJriIzk0Wv2eEBXEHZnZ
+    xLQl6N3Gg2upcddwMp2YISd728s/6DsRA7K92/8Ur2V6Zi/gtAk=
+    =fgnn
+    -----END PGP PUBLIC KEY BLOCK-----

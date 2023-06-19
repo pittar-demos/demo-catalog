@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: openshift-gitops
 
 resources:
+  - argocd-gpg-keys-cm.yaml
   - openshift-gitops-admins-group.yaml
   - argocd.yaml
   - openshift-gitops-extended-clusterrole.yaml
