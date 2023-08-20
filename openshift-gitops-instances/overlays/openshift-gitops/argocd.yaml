@@ -8,6 +8,8 @@ metadata:
     argocd.argoproj.io/sync-options: ServerSideApply=true
   name: openshift-gitops
 spec:
+  extraConfig:
+    accounts.rhdh: apiKey, login
   applicationInstanceLabelKey: argocd.argoproj.io/instance
   server:
     insecure: true
