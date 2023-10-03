@@ -6,6 +6,6 @@ metadata:
   name: gitops-admins
 users:
   - opentlc-mgr
-  - kubeadmin
+  - kube:admin
   - admin
   - user1
