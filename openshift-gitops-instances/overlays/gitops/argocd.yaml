@@ -20,8 +20,7 @@ spec:
       openShiftOAuth: true
     provider: dex
   resourceHealthChecks: |
-    - group: ''
-      kind: PersistentVolumeClaim
+    - kind: PersistentVolumeClaim
       check: |
         hs = {}
         if obj.status ~= nil then
