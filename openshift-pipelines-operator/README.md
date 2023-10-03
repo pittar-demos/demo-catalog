@@ -6,4 +6,13 @@ Do not use the `base` directory directly, as you will need to patch the `channel
 
 The current *overlays* available are for the following channels:
 * [latest](overlays/latest)
-* [pipelines-1.9](overlays/pipelines-1.9)
+* [pipelines-1.11](overlays/pipelines-1.11)
+* [pipelines-1.11](overlays/pipelines-1.12)
+
+## Cluster: openshift-gitops namespace instance
+
+To manage config of the core instance of OpenShift GitOps with OpenShift GitOps :)
+
+```
+oc apply -k https://github.com/pittar-demos/demo-catalog/openshift-pipelines-operator/argocd
+```
