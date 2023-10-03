@@ -12,6 +12,6 @@ spec:
     listenOnUpdates: false
   perNode:
     collector:
-      collection: KernelModule
-      imageFlavor: Regular
+      collection: EBPF
+      imageFlavor: Slim
     taintToleration: TolerateTaints
