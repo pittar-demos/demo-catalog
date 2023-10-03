@@ -19,7 +19,7 @@ spec:
     dex:
       openShiftOAuth: true
     provider: dex
-  resourceCustomizations: |
+  resourceHealthChecks: |
     PersistentVolumeClaim:
       health.lua: |
         hs = {}

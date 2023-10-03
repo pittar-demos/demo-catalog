@@ -9,3 +9,9 @@ oc apply -k https://github.com/pittar-demos/demo-catalog/openshift-gitops-instan
 ```
 
 Once Argo CD is up and running in the `openshift-gitops` namespace, you're ready to setup your demos!
+
+## Developer: gitops namespace instance
+
+```
+oc apply -k https://github.com/pittar-demos/demo-catalog/openshift-gitops-instances/argocd/gitops
+```
