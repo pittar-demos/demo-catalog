@@ -7,7 +7,7 @@ Inspired by the [Red Hat CoP GitOps Catalog](), but a smaller version that is sp
 If you're starting with OpenShift GitOps, then run the following command to deploy Argo CD:
 
 ```
-oc apply -k https://github.com/pittar-demos/demo-catalog/openshift-gitops-operator/overlays/gitops-1.9
+oc apply -k https://github.com/pittar-demos/demo-catalog/openshift-gitops-operator/overlays/gitops-1.10
 ```
 
 Once Argo CD is up and running in the `openshift-gitops` namespace, you're ready to setup your demos!
