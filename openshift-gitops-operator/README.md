@@ -6,4 +6,6 @@ Do not use the `base` directory directly, as you will need to patch the `channel
 
 The current *overlays* available are for the following channels:
 * [latest](overlays/latest)
-* [gitops-1.7](overlays/gitops-1.7)
+* [gitops-1.8](overlays/gitops-1.8)
+* [gitops-1.9](overlays/gitops-1.9)
+* [gitops-1.10](overlays/gitops-1.10)
