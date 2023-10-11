@@ -159,7 +159,7 @@ spec:
       script: >
         #!/usr/bin/env bash
 
-        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tr -d '\n')
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tr -d '\n\t\r ')
 
         echo "Version x $version x"
 
