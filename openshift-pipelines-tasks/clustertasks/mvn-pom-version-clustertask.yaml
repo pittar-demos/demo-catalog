@@ -161,7 +161,7 @@ spec:
 
         version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
 
-        echo "POM version: $version"
+        echo "Version x $version x"
 
         echo "$version" | tee $(results.pom-version.path)
       resources: {}
