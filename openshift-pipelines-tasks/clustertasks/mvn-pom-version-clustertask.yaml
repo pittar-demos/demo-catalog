@@ -159,11 +159,11 @@ spec:
       script: >
         #!/usr/bin/env bash
 
-        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tr -d '\n\t\r ')
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
 
         echo "Version x $version x"
 
-        echo "$version" | tee $(results.pom-version.path)
+        echo "$version" | tr -d '\n\t\r ' | tee $(results.pom-version.path)
       resources: {}
       securityContext:
         runAsNonRoot: true
