@@ -63,7 +63,7 @@ spec:
       type: string
   results:
     - description: App version from POM file.
-      name: POM_VERSION
+      name: pom-version
       type: string
   steps:
     - env:
@@ -163,7 +163,7 @@ spec:
 
         echo "POM version: $version"
 
-        echo "$version" | tee $(results.POM_VERSION.path)
+        echo "$version" | tee $(results.pom-version.path)
       resources: {}
       securityContext:
         runAsNonRoot: true
