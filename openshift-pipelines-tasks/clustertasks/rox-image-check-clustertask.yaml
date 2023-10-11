@@ -16,7 +16,7 @@ spec:
       optional: true
   steps:
     - name: rox-image-check
-      image: registry.redhat.io/advanced-cluster-security/rhacs-roxctl-rhel8:3.74
+      image: registry.access.redhat.com/advanced-cluster-security/rhacs-roxctl-rhel8:4.2
       script: |
         #!/usr/bin/env bash
         set +x
