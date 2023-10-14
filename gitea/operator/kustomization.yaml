@@ -1,0 +1,7 @@
+namespace: gitea-operator
+
+resources:
+  - namespace.yaml
+  - catalogsource.yaml
+  - subscription.yaml
+  - operatorgroup.yaml

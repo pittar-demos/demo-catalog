@@ -1,5 +1,5 @@
 resources:
-  - mvn-extended-clustertask.yaml
+  - super-maven-clustertask.yaml
   - rox-image-check-clustertask.yaml
   - rox-image-scan-clustertask.yaml
   - mvn-pom-version-clustertask.yaml
