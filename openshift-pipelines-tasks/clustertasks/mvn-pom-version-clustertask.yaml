@@ -163,6 +163,10 @@ spec:
 
         echo "Version x $version x"
 
+        if [ "$(params.VERSION_TYPE)" == "release"]; then
+            version=${version%-*}
+        fi
+
         echo "$version" | tr -d '\n\t\r ' | tee $(results.pom-version.path)
       resources: {}
       securityContext:
