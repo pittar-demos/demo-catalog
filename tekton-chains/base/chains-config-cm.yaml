@@ -21,13 +21,16 @@ spec:
     - name: communityClusterTasks
       value: "true"
   chain:
-    artifacts.taskrun.format: in-toto
     artifacts.taskrun.storage: tekton
-    artifacts.taskrun.signer: x509
-    artifacts.oci.storage: oci
-    artifacts.oci.format: simplesigning
+    transparency.enabled: 'true'
+    artifacts.taskrun.format: in-toto
     artifacts.oci.signer: x509
-    transparency.enabled: "true"
+    artifacts.oci.storage: oci
+    disabled: false
+    artifacts.oci.format: simplesigning
+    options:
+      disabled: false
+    artifacts.taskrun.signer: x509
   config: {}
   dashboard:
     options:
