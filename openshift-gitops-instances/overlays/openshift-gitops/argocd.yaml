@@ -24,3 +24,4 @@ spec:
       g, openshift-gitops-admins, role:admin
       g, system:cluster-admins, role:admin
     scopes: "[groups]"
+  resourceHealthChecks:

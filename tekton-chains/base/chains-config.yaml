@@ -1,0 +1,109 @@
+apiVersion: operator.tekton.dev/v1alpha1
+kind: TektonConfig
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+  labels:
+    openshift-pipelines.tekton.dev/sa-created: 'true'
+    operator.tekton.dev/release-version: 1.12.0
+  name: config
+spec:
+  addon:
+    params:
+      - name: clusterTasks
+        value: 'true'
+      - name: pipelineTemplates
+        value: 'true'
+      - name: communityClusterTasks
+        value: 'true'
+  platforms:
+    openshift:
+      pipelinesAsCode:
+        enable: true
+        options:
+          disabled: false
+        settings:
+          custom-console-url-pr-tasklog: ''
+          bitbucket-cloud-check-source-ip: 'true'
+          custom-console-url-pr-details: ''
+          remote-tasks: 'true'
+          application-name: Pipelines as Code CI
+          auto-configure-new-github-repo: 'false'
+          error-log-snippet: 'true'
+          error-detection-from-container-logs: 'true'
+          remember-ok-to-test: 'true'
+          error-detection-max-number-of-lines: '50'
+          error-detection-simple-regexp: >-
+            ^(?P<filename>[^:]*):(?P<line>[0-9]+):(?P<column>[0-9]+):([
+            ]*)?(?P<error>.*)
+          custom-console-name: ''
+          secret-auto-create: 'true'
+          custom-console-url: ''
+          secret-github-app-token-scoped: 'true'
+      scc:
+        default: pipelines-scc
+  chain:
+    artifacts.taskrun.storage: tekton
+    transparency.enabled: 'true'
+    artifacts.taskrun.format: in-toto
+    artifacts.oci.signer: x509
+    artifacts.oci.storage: oci
+    disabled: false
+    artifacts.oci.format: simplesigning
+    options:
+      disabled: false
+    artifacts.taskrun.signer: x509
+  pipeline:
+    running-in-environment-with-injected-sidecars: true
+    metrics.taskrun.duration-type: histogram
+    enable-cluster-resolver: true
+    metrics.pipelinerun.duration-type: histogram
+    await-sidecar-readiness: true
+    params:
+      - name: enableMetrics
+        value: 'true'
+    enable-hub-resolver: true
+    default-service-account: pipeline
+    enable-git-resolver: true
+    enable-bundles-resolver: true
+    require-git-ssh-secret-known-hosts: false
+    enable-tekton-oci-bundles: false
+    performance:
+      disable-ha: false
+    send-cloudevents-for-runs: false
+    metrics.taskrun.level: task
+    trusted-resources-verification-no-match-policy: ignore
+    metrics.pipelinerun.level: pipeline
+    enable-api-fields: beta
+    enable-provenance-in-status: true
+    enable-custom-tasks: true
+    disable-creds-init: false
+    options:
+      disabled: false
+    disable-affinity-assistant: true
+  config: {}
+  params:
+    - name: createRbacResource
+      value: 'true'
+  pruner:
+    disabled: false
+    keep: 100
+    resources:
+      - pipelinerun
+    schedule: 0 8 * * *
+  profile: all
+  targetNamespace: openshift-pipelines
+  dashboard:
+    options:
+      disabled: false
+    readonly: false
+  hub:
+    options:
+      disabled: false
+  trigger:
+    default-service-account: pipeline
+    enable-api-fields: stable
+    options:
+      disabled: false
