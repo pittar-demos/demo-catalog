@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: git
+spec:
+  params:
+    - description: The set of commands to run
+      name: commands
+      type: string
+  stepTemplate:
+    env:
+      - name: HOME
+        value: /tekton/home
+    name: ''
+    resources: {}
+  steps:
+    - image: 'gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.12.1'
+      name: git
+      resources: {}
+      script: |
+        #!/usr/bin/env sh
+        $(params.commands)
+      workingDir: $(workspaces.source.path)
+  workspaces:
+    - name: source

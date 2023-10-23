@@ -3,3 +3,4 @@ resources:
   - rox-image-check-clustertask.yaml
   - rox-image-scan-clustertask.yaml
   - mvn-pom-version-clustertask.yaml
+  - git-clustertask.yaml
