@@ -163,7 +163,7 @@ spec:
 
         echo "Version x $version x"
 
-        if [ "$(params.VERSION_TYPE)" == "release"]; then
+        if [ "$(params.VERSION_TYPE)" == "release" ]; then
             version=${version%-*}
         fi
 
