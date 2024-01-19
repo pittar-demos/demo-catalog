@@ -10,14 +10,14 @@ metadata:
   labels:
     gitops.ownedBy: openshift-gitops
     category: devsecops
-  name: nexus
+  name: nexus3
 spec:
   destination:
-    namespace: nexus
+    namespace: nexus3
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: nexus/overlays/nexus3
+    path: nexus3/overlays/nexus3
     repoURL: https://github.com/pittar-demos/demo-catalog.git
     targetRevision: main
   syncPolicy:

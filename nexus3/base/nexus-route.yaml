@@ -4,14 +4,14 @@ metadata:
   annotations:
     haproxy.router.openshift.io/timeout: 4m
   labels:
-    app: nexus
-  name: nexus
+    app: nexus3
+  name: nexus3
 spec:
   port:
     targetPort: 8081-tcp
   to:
     kind: Service
-    name: nexus
+    name: nexus3
     weight: 100
   tls:
     termination: edge

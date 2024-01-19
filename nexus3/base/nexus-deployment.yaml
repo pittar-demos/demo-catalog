@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nexus
-  name: nexus
+    app: nexus3
+  name: nexus3
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: nexus
+      app: nexus3
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: nexus
-        deploymentconfig: nexus
+        app: nexus3
+        deploymentconfig: nexus3
     spec:
       containers:
         - env:
@@ -34,7 +34,7 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-          name: nexus
+          name: nexus3
           image: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.64.0-ubi-4
           ports:
             - containerPort: 8081
@@ -69,4 +69,4 @@ spec:
       volumes:
         - name: nexus-data
           persistentVolumeClaim:
-            claimName: nexus
+            claimName: nexus3

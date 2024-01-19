@@ -13,13 +13,13 @@ spec:
             - |
               echo "Waiting for Nexus to come online..."
 
-              bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' nexus:8081)" != "200" ]]; do sleep 5; done'
+              bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' nexus3:8081)" != "200" ]]; do sleep 5; done'
 
               echo "Nexus is up!  Configure repository proxies."
 
-              curl -o /tmp/nexus-functions -s https://raw.githubusercontent.com/pittar-demos/demo-catalog/main/nexus/scripts/nexus-functions;
+              curl -o /tmp/nexus-functions -s https://raw.githubusercontent.com/pittar-demos/demo-catalog/main/nexus3/scripts/nexus-functions;
 
-              source /tmp/nexus-functions; add_nexus3_redhat_repos admin admin123 http://nexus:8081
+              source /tmp/nexus-functions; add_nexus3_redhat_repos admin admin123 http://nexus3:8081
           imagePullPolicy: Always
           name: configure-nexus
       dnsPolicy: ClusterFirst

@@ -2,8 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    app: nexus
-  name: nexus
+    app: nexus3
+  name: nexus3
 spec:
   accessModes:
     - ReadWriteOnce
