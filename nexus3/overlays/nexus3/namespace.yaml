@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    openshift.io/description: Nexus artifact repository.
-    openshift.io/display-name:  Nexus 3
-  labels:
-    argocd.argoproj.io/managed-by: openshift-gitops
-  name: nexus3
