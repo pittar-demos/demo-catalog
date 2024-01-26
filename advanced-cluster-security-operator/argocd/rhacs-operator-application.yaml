@@ -17,7 +17,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: advanced-cluster-security-operator/overlays/rhacs-3.74
+    path: advanced-cluster-security-operator/overlays/stable
     repoURL: https://github.com/pittar-demos/demo-catalog.git
     targetRevision: main
   syncPolicy:
