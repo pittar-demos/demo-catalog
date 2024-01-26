@@ -11,6 +11,7 @@ metadata:
     gitops.ownedBy: openshift-gitops
     category: operators
   name: rhacs-operator
+  namespace: openshift-gitops
 spec:
   destination:
     namespace: rhacs-operator
