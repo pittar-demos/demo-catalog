@@ -17,7 +17,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: advanced-cluster-security-instances/overlays/internal-registry-integration
+    path: advanced-cluster-security-instances/overlays/default
     repoURL: https://github.com/pittar-demos/demo-catalog.git
     targetRevision: main
   syncPolicy:
