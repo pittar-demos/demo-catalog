@@ -4,10 +4,10 @@ metadata:
   name: acs-image-scan
 spec:
   params:
-    - name: image
+    - name: IMAGE
       type: string
       description: Full name of image to scan (example -- gcr.io/rox/sample:5.0-rc1)
-    - name: output_format
+    - name: OUTPUT_FORMAT
       type: string
       description:  Output format (json | csv | table )
       default: json
@@ -34,6 +34,6 @@ spec:
 
         export NO_COLOR="True"
 
-        echo "Scanning image: $(params.image)"
+        echo "Scanning image: $(params.IMAGE)"
 
-        roxctl image scan --insecure-skip-tls-verify -e $ROX_CENTRAL_ENDPOINT --image $(params.image) --output $(params.output_format)
+        roxctl image scan --insecure-skip-tls-verify -e $ROX_CENTRAL_ENDPOINT --image $(params.IMAGE) --output $(params.OUTPUT_FORMAT)
