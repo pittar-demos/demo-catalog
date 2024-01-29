@@ -4,9 +4,13 @@ metadata:
   name: acs-image-check
 spec:
   params:
-    - name: image
+    - name: IMAGE
       type: string
       description: Full name of image to scan (example -- gcr.io/rox/sample:5.0-rc1)
+    - name: BREAK_ON_FAIL
+      type: string
+      description: Break build if check fails.
+      default: "true"
   results:
       - name: check_passed
         description: Whether the task passed or failed, "true" for a pass, "false" for a fail.
@@ -31,10 +35,12 @@ spec:
 
         echo "Scanning against endpoint ${ROX_CENTRAL_ENDPOINT}"
 
-        if roxctl image check --insecure-skip-tls-verify -e $ROX_CENTRAL_ENDPOINT --image $(params.image); then
+        if roxctl image check --insecure-skip-tls-verify -e $ROX_CENTRAL_ENDPOINT --image $(params.IMAGE); then
           echo -n "true" > $(results.check_passed.path)
-        else
+        elif [ $(params.BREAK_ON_FAIL) == "true" ] ; then
           echo -n "false" > $(results.check_passed.path)
           exit 1
+        else
+          echo "Image failed ACS check.  To break builds on failure set param BREAK_ON_FAIL to true."
         fi
         cd .
