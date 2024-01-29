@@ -1,12 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   name: configure-nexus
 spec:
   template:
     spec:
       containers:
-        - image: registry.access.redhat.com/ubi8/ubi:8.3
+        - image: quay.io/pittar/toolkit:latest
           command:
             - /bin/bash
             - -c
@@ -15,15 +17,46 @@ spec:
 
               bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' nexus3:8081)" != "200" ]]; do sleep 5; done'
 
-              echo "Nexus is up!  Configure repository proxies."
+              echo "Nexus is up!  Configure password."
 
-              curl -o /tmp/nexus-functions -s https://raw.githubusercontent.com/pittar-demos/demo-catalog/main/nexus3/scripts/nexus-functions;
+              podname=$(oc get pod -l app=nexus3 -oname -n cicd-tools)
+              podname=$(echo ${podname#*/})
 
-              source /tmp/nexus-functions; add_nexus3_redhat_repos admin admin123 http://nexus3:8081
+              oc cp $podname:/opt/sonatype/sonatype-work/nexus3/admin.password \
+               /tmp/password -n cicd-tools
+              
+              password=$(cat /tmp/password)
+
+              echo "$password"
+              
+              NEW_PASSWORD="admin123"
+
+              curl -ifu admin:"${password}" \
+              -XPUT -H 'Content-Type: text/plain' \
+              --data "${NEW_PASSWORD}" \
+              http://nexus3:8081/service/rest/v1/security/users/admin/change-password
+
+              read -r -d '' _ANON_ACCESS << EOM
+              {
+                "enabled": true,
+                "userId": "admin",
+                "realmName": "NexusAuthenticatingRealm"
+              }
+              EOM
+
+              curl -ifu admin:"${NEW_PASSWORD}" \
+              -XPUT -H "Accept: application/json" \
+              -H "Content-Type: application/json" \
+              --data "${_ANON_ACCESS}" \
+              http://nexus3:8081/service/rest/v1/security/anonymous
+
+              #curl -o /tmp/nexus-functions -s https://raw.githubusercontent.com/pittar-demos/demo-catalog/main/nexus3/scripts/nexus-functions;
+
+              #source /tmp/nexus-functions; add_nexus3_redhat_repos admin admin123 http://nexus3:8081
           imagePullPolicy: Always
           name: configure-nexus
       dnsPolicy: ClusterFirst
       restartPolicy: OnFailure
-      serviceAccount: default
-      serviceAccountName: default
+      serviceAccount: nexusjob
+      serviceAccountName: nexusjob
       terminationGracePeriodSeconds: 30
