@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: gitea-operator/operator
+    path: gitea/operator
     repoURL: https://github.com/redhat-cop/gitops-catalog.git
     targetRevision: main
   syncPolicy:
