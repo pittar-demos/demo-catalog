@@ -24,7 +24,12 @@ spec:
 
               oc create cm argocd-tls-certs-cm \
                 --from-file=gitea-scm.apps-crc.testing=/tmp/tls.crt \
-                -n openshift-gitops
+                -n openshift-gitops \
+                --dry-run -o yaml > /tmp/cert-cm.yaml
+
+              oc patch cm argocd-tls-certs-cm \
+                -n openshift-gitops \
+                -p $(cat /tmp/cert-cm.yaml)
 
               echo "Done"
           imagePullPolicy: Always
