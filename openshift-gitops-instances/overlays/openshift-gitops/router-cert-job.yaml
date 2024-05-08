@@ -22,7 +22,7 @@ spec:
 
               echo "Create ConfigMap"
 
-              oc create cm argocd-tls-certs-cm2 \
+              oc create cm argocd-tls-certs-cm \
                 --from-file=gitea-scm.apps-crc.testing=/tmp/tls.crt \
                 -n openshift-gitops
 
