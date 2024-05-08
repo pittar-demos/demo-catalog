@@ -28,9 +28,8 @@ spec:
                 --dry-run=client -o yaml \
                 > /tmp/cert-cm.yaml
 
-              oc patch cm argocd-tls-certs-cm \
-                -n openshift-gitops \
-                -p $(cat /tmp/cert-cm.yaml)
+              oc apply -f /tmp/cert-cm.yaml \
+                -n openshift-gitops
 
               echo "Done"
           imagePullPolicy: Always
